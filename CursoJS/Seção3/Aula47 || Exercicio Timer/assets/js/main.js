@@ -8,6 +8,7 @@ function getTimeFromSeconds (seconds) {
 }
 // Varíaveis para funcionar
 const watch = document.querySelector('.watch');
+// não é necessário mais as variáveis, com o document.addEventListener();
 const start = document.querySelector('.start');
 const pause = document.querySelector('.pause');
 const clear =  document.querySelector('.clear');
@@ -37,12 +38,26 @@ function stopWatch() {
         watch.style.color = '';
         clearInterval(timer);
         watch.innerHTML = '00:00:00'
+        seconds = 0;
     }, 0);
     
     
 }
-f
+// Jeito pŕatico de usar o addEventListener
+document.addEventListener('click' , function(e) {
+    // .target pega o lugar onde está sendo clicado no document
+    const el = e.target
+    // checagem para ver qual botão está sendo pressionado. 'class ou id'
+    if(el.classList.contains('clear')) stopWatch();
+    if(el.classList.contains('pause')) pauseWatch();
+    if(el.classList.contains('start')) {
+        clearInterval(timer); startWatch();
+    }
+})
+
+/*
 start.addEventListener('click', (e) => {
+   clearInterval(timer);
    startWatch();
 });
 
@@ -53,4 +68,4 @@ pause.addEventListener('click', (e) => {
 clear.addEventListener('click', (e) => {
     stopWatch();
 });
-
+*/
