@@ -1,4 +1,3 @@
-// Prototypes são um jeito de na função construtora, colocar todas as funções
 // que seriam criadas todas as vezes junto com objeto...
 // em somente um local da memória.. 
 // ao invés de sempre criar em cada instância da função construtora.
