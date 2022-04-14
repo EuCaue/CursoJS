@@ -22,7 +22,7 @@ Object.setPrototypeOf(objB, objA);
 
 
 console.log(objB.idade);
-
+ 
 // Função construtora
 function Produto(nome, preco) {
     this.nome = nome;
