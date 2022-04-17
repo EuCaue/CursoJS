@@ -1,6 +1,6 @@
 const nomes = ['Maria', 'João', 'Eduardo', 'Gabriel', 'Júlia'];
 
-// Serve para "fatiar" o array, o primeiro valor é para indicar de qualquer o indice
+// Serve para "fatiar" o array, o primeiro valor é para indicar de qual lugar do indice
 // Segundo parametro é para quantos elementos é para apagar, apartir do parametro inicial.
 // Proximo parametro é o valor que vai ser recolocado no lugar dos elementos removidos.
 // Pode ser usado para adicionar se o segundo parametro for 0, então ele adicionará após o indice que foi passado.
