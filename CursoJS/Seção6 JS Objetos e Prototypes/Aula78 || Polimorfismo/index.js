@@ -14,7 +14,9 @@ Conta.prototype.sacar = function (valor) {
         return;
     };
 
+
     this.saldo -= valor;
+    console.log("🚀 ~ file: index.js ~ line 18 ~ this.saldo", this.saldo);
     this.verSaldo();
 };
 
@@ -57,6 +59,7 @@ ContaCorrente.prototype.sacar = function (valor) {
     }
 
     this.saldo -= valor;
+    console.log("🚀 ~ file: index.js ~ line 60 ~ this.saldo", this.saldo);
     this.verSaldo();
 
 };
@@ -73,6 +76,5 @@ const contaCorrente = new ContaCorrente(2510, 6870, 0, 350);
 const contaPoupanca = new ContaPoupanca(4575, 2047, 0);
 contaCorrente.depositar(10);
 contaCorrente.sacar(110);
-
 contaPoupanca.depositar(10);
 contaPoupanca.sacar(110);
