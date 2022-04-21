@@ -32,7 +32,6 @@ class ControleRemoto {
 
 }
 
-
 const c1 = new ControleRemoto('LG');
 
 c1.aumentarVolume();
