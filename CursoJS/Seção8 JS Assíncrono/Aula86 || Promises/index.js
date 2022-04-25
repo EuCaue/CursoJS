@@ -37,7 +37,7 @@ function esperaAi(msg, tempo) {
 esperaAi('Frase 1', rand(1, 3)).then(resposta => { 
     console.log(resposta);
     return esperaAi('Frase 2', rand(1, 3));
-})
+}) 
 .then(resposta => { 
     console.log(resposta);
     return esperaAi(22222, rand(1, 3));
