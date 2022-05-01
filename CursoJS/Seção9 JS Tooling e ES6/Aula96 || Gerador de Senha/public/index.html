@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <main class="container">
+                <h1>Gerador de Senhas</h1>
+        <section>
+            <div class="senhaGerada">Selecione as Opções</div>
+            <div class="senhaForca senhaForte">Senha Forte</div>
+            <label for="inputSenha">Quantidade de caracteres:</label>
+            <input type="number" value="5" min='1' max="50" class="inputQtd">
+            <br>
+            <label for="checkMaiuscula">Adicionar Maiúsculas:</label>
+            <input type="checkbox" class="checkMaiuscula">
+            <br>
+            <label for="checkMinuscula">Adicionar Minúsculas:</label>
+            <input type="checkbox" class="checkMinuscula">
+            <br>
+            <label for="checkNumeros">Adicionar Números:</label>
+            <input type="checkbox" class="checkNumeros">
+            <br>
+            <label for="checkSimbolos">Adicionar Símbolos:</label>
+            <input type="checkbox" class="checkSimbolos">
+            <br>
+            <input type="button" value="Gerar Senha" class="btnGeraSenha">
+        </section>
+  </main>
+    <script src="assets/js/bundle.js"></script>
+</body>
+
+</html>
