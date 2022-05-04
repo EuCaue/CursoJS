@@ -21,6 +21,7 @@ const nome = mod1.nome;
 //? Importando com atribuição por desestruturação 
 const { sobrenome, falaNome} = require('./mod1');
 const { Pessoa } = require('./mod1');
+const {config} = require('process');
 const p1 = new Pessoa('Cauê');
 
 mod1.falaNome()
