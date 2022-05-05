@@ -1,6 +1,9 @@
 //? Chamando o fs do node
 const fs = require('fs').promises;
 const path = require('path');
+const os = require('os');
+
+
 
 //*  Resolvendo o caminho do diretório e lendo os arquivos deles
 async function readdir(rootDir) {
@@ -18,17 +21,18 @@ async function walk(files, rootDir) {
     const fileFullPath = path.resolve(rootDir, file);
     //* Status do caminho completo
     const stats = await fs.stat(fileFullPath);
-    //* Se for um direto, retorna true
+    //* Se for uma pasta, retorna true
 
     //* Se for true, ele vai retornar para a função
     //* E ir para a próxima iteração do laço
     if (/\.git/g.test(fileFullPath)) continue;
     if (/\node_modules/g.test(fileFullPath)) continue;
-    
+
     if (stats.isDirectory()) {
       readdir(fileFullPath);
       continue;
     }
+    // se for arquivos .css, será mostrado, os outros não
     if (!/\.css$/g.test(fileFullPath)) continue;
     console.log(fileFullPath);
   }
