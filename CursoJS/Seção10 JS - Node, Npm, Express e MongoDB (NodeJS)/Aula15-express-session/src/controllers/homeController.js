@@ -5,6 +5,19 @@
 
 //?GET
 exports.paginaInicial = (req, res) => {
+  //? Vai ficar salvo 7 dias na base de dados, porque foi defindo no server...  
+  //* Adicionar usuario e status de login 
+  // req.session.usuario = { nome: 'Cauê', logado: true}; 
+  // console.log(req.session.usuario);
+
+  //! Mensagem flash, que é um uso único, após exibidas umas vez, não será mais
+  //? Retorna um array, com as mensagem, podendo ter várias mensagem em um flash 
+  // req.flash('info', 'Hello World');
+  // req.flash('error', 'Mensagem de erro');
+  // req.flash('sucess', 'Mensagem de sucesso');
+  console.log(req.flash('error'), req.flash('sucess'), req.flash('info'));
+  
+
   //* Rederizando o HTML/EJS
   res.render('index');
   return;
