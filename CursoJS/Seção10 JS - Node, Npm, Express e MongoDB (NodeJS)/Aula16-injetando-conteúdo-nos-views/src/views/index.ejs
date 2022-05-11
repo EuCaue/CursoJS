@@ -1,0 +1,40 @@
+<!--* Importando outros arquivos EJS -->
+<!--? Importando toda a tag head -->
+<%- include('includes/head') %>
+
+<!-- <#% controle de fluxo(if,for, while etc) -->
+
+
+    <section class="container">
+        <h1>
+            <!-- * tag para usar JS no HTML
+            <!-- ! <#%= titulo %><br> -->
+            <!--? %= é o modo "seguro", não escapa os caracteres -->
+            <!--* somente basta colocar a chave da variavel que foi criada em outros arquivos -->
+
+            <!--? Já o - escapa, caso o JS venha com HTML -->
+            <!-- <#%- titulo%>  -->
+            <!-- Fazendo IF em EJS -->
+            <!--! <#% if (typeof titulo !== 'undefined') { %> -->
+            <!-- !<#%- titulo %> -->
+            <!-- !<#% } else { %> -->
+            <!-- !O Titulo não foi enviado -->
+            <!-- !<#% } %>   -->
+
+            <!--! Fazendo forEach no EJS -->
+            <!-- !<#% numeros.forEach(num  => { %>
+                <#%= num %><br> 
+            <#% #}); %> -->
+                Bom dia
+
+        </h1>
+        <form action="/" method="post">
+            <label for="cliente">Cliente</label>
+            <input type="text" name="cliente">
+            <button type="submit">Submit</button>
+        </form>
+
+    </section>
+
+    <!-- Importando outros arquivos EJS -->
+    <%- include('includes/footer') %>
