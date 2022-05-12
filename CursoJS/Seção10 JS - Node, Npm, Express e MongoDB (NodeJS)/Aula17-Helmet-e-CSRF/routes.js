@@ -1,28 +1,18 @@
-//? Arquivos de ROTAS, somente para "usar" as rotas
+//? Arquivos usado apenas para encaminhar as rotas
 const express = require('express');
 const route = express.Router();
-// Importando as Rotas
+
+//? Importando Rotas
 const homeController = require('./src/controllers/homeController');
 const contatoController = require('./src/controllers/contatoController');
 
-//? parametro next, é o próximo middleware a ser executado
-//* Middleware é a função que faz algo antes de "responder" a req
-//? Middle são funções passadas, antes e depois da res
 
-// function meuMiddleware(req, res, next) {
-//    Salvando dados na sessão
-//   req.session = { nome: 'Cauê', sobrenome: 'Souza'}
-//   console.log('\n Passei no seu Middleware');
-
-//    OBRIGATORIO O NEXT PARA ele ir para a próxima função
-//   next();
-// }
-
-// Rotas da Home
+//? Controlando as rotas Da /home
 route.get('/', homeController.paginaInicial);
 route.post('/', homeController.trataPost);
 
-// Rotas de Contato
+//? Controlando as rotas do /contato
 route.get('/contato', contatoController.paginaInicial);
 
+//? Exportando tudo
 module.exports = route;

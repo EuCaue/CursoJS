@@ -1,41 +1,20 @@
 <!--* Importando outros arquivos EJS -->
 <!--? Importando toda a tag head -->
-<%-title %>  
-<%- include('includes/head') %>
-<!-- <#% controle de fluxo(if,for, while etc) -->
+<%-title %>
+    <%- include('includes/head') %>
+        <!-- <#% controle de fluxo(if,for, while etc) -->
 
-    <section class="container">
-        <h1>
-            <!-- * tag para usar JS no HTML
-            <!-- ! <#%= titulo %><br> -->
-            <!--? %= é o modo "seguro", não escapa os caracteres -->
-            <!--* somente basta colocar a chave da variavel que foi criada em outros arquivos -->
+        <section class="container">
+            <h1>Bom dia</h1>
+            <form action="/" method="post">
+                <!--? Importante para a segurança do site, não mover, e ter em todos OS FORMS  -->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <label for="cliente">Cliente</label>
+                <input type="text" name="cliente">
+                <button type="submit">Submit</button>
+            </form>
 
-            <!--? Já o - escapa, caso o JS venha com HTML -->
-            <!-- <#%- titulo%>  -->
-            <!-- Fazendo IF em EJS -->
-            <!--! <#% if (typeof titulo !== 'undefined') { %> -->
-            <!-- !<#%- titulo %> -->
-            <!-- !<#% } else { %> -->
-            <!-- !O Titulo não foi enviado -->
-            <!-- !<#% } %>   -->
+        </section>
 
-            <!--! Fazendo forEach no EJS -->
-            <!-- !<#% numeros.forEach(num  => { %>
-                <#%= num %><br> 
-            <#% #}); %> -->
-                Bom dia
-
-        </h1>
-        <form action="/" method="post">
-            <!--? Importante para a segurança do site, não mover, e ter em todos OS FORMS  -->
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <label for="cliente">Cliente</label>
-            <input type="text" name="cliente">
-            <button type="submit">Submit</button>
-        </form>
-
-    </section>
-
-    <!-- Importando outros arquivos EJS -->
-    <%- include('includes/footer') %>
+        <!-- Importando outros arquivos EJS -->
+        <%- include('includes/footer') %>

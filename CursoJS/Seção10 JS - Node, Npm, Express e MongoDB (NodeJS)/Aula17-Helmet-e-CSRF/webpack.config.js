@@ -3,7 +3,7 @@ const path = require('path'); // CommonJS !==  diferente do ES6
 module.exports = { 
   // Só gera o arquivo com um monte de 
   // Pórem, mais rápido
-  mode: 'development',
+  mode: 'production',
   
   // Arquivo de entrada, da onde o Source está vindo
   entry: './frontend/main.js',

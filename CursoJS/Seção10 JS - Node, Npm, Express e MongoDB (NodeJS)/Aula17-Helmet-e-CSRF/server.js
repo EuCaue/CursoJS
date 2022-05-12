@@ -1,14 +1,16 @@
 //! dotenv feito para a connectionString para a base de dados
 require('dotenv').config();
 
-
+//? Importando o Express
 const express = require('express');
 const app = express();
+
 //* Conectando a base de dados do MONGO
 const mongoose = require('mongoose');
 
 //? Connectando e emitindo um sinal de pronto
-//* Para a conexão so ocorre quando estiver pronto
+//* Para a conexão so ocorrer quando for emitido o sinal de 'pronto'
+// Retorna uma promise
 mongoose.connect(process.env.CONNECTIONSTRING)
   .then(() => {
     app.emit('pronto');
@@ -19,13 +21,17 @@ mongoose.connect(process.env.CONNECTIONSTRING)
 //* Import's para salvar a salvar sessão 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+
+// Mensagens auto-destrutivas
 const flash = require('connect-flash');
 
+//? Rotas&&Segurança 
 const routes = require('./routes');
 const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
+//? Importando Middleswares
 const { middlewareGlobal, checkCsrf, csrfMiddleware } = require('./src/middlewares/middleware');
 
 
@@ -33,13 +39,16 @@ const { middlewareGlobal, checkCsrf, csrfMiddleware } = require('./src/middlewar
 app.use(helmet());
 
 
-//! Necessário para tudo que for usado POST, o express retornar um OBJETO com as informações
+//? Necessário para tudo que for usado POST, o express retornar um OBJETO com as informações
 app.use(express.urlencoded({ extended: true }));
 
-//? Setando a pasta de arquivos estaticos que o express vai usar
+//? Opção para poder dar JSON.parse() para a aplicação
+app.use(express.json());
+
+//? Configurando qual a pasta de arquivos estaticos que o express vai usar
 app.use(express.static('./public/'));
 
-// Configurando a sessão
+//? Configurações sobre a sessão
 //* secret: tem que ser algo bem secreto, pode ser qualqquer coisa
 //* store: Onde tá salvando, no caso usando mongoose, tá salvando no MONGODB
 //* resave: false, recomendado
@@ -65,28 +74,27 @@ app.use(flash());
 // Usando Csurf para a segurança
 app.use(csrf());
 
-//? Fazendo o todos os verbos e rotas, passarem por esse Middleware
+//? Utilizando os Middlewares, para todas as rotas
 app.use(middlewareGlobal);
 app.use(checkCsrf);
 app.use(csrfMiddleware);
 
 
-// Setando a pasta da views, e qual engine ele vai usar
-// No caso ./src/views
-// E engine EJS
-
-// Setando com caminho absoluto
-//! app.set('views', path.resolve(__dirname, 'src', 'views'));
-
-
-
+//? Configurando a pasta de Views e a Engine
+// Views = Arquivos que vão sendo renderizado
+//* Pasta: ./src/views
+//* Engine: EJS
+//* Exemplo com caminho absoluto
+// app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-// Fazendo o express usar as rotas do const routes
+
+// Fazendo o express usar as rotas do app
 app.use(routes);
 
-//? Para so começar a escutar após conectar na base de Dados. com o sinal de pronto
+
+//? Iniciar o servidor, após conectar com sucesso na base de dados
 app.on('pronto', () => {
   app.listen(3000, () => {
     console.log('Acesse via http://localhost:3000');
