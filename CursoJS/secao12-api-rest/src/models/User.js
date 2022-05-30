@@ -1,10 +1,11 @@
-// Modelo para de aluno para a base de dados
+// Modelo para de usuário para a base de dados
 import Sequelize, { Model } from 'sequelize';
 import bcryptjs from 'bcryptjs';
 
 export default class User extends Model {
   static init(sequelize) {
     super.init({
+      // validando e exbindo a msg caso tenha erro
       nome: {
         type: Sequelize.STRING,
         defaultValue: '',
@@ -15,6 +16,7 @@ export default class User extends Model {
           },
         },
       },
+      // validando e exbindo a msg caso tenha erro
       email: {
         type: Sequelize.STRING,
         defaultValue: '',
@@ -31,6 +33,7 @@ export default class User extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
+      // validando e exbindo a msg caso tenha erro
       password: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',
@@ -44,7 +47,7 @@ export default class User extends Model {
     }, {
       sequelize,
     });
-
+    // Hook para antes de salvar verificar a hash da senha do usuário
     this.addHook('beforeSave', async (user) => {
       // eslint-disable-next-line no-param-reassign
       user.password_hash = await bcryptjs.hash(user.password, 8);

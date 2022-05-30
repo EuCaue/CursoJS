@@ -4,7 +4,7 @@ import userController from '../controllers/UserController';
 
 const router = new Router();
 
-// Rotas da home
+// Rotas dos users
 router.post('/', userController.store);
 
 export default router;
