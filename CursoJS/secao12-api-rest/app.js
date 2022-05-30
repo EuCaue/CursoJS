@@ -1,4 +1,9 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 // Imports
+import './src/database';
 import express from 'express';
 import homeRoutes from './src/routes/homeRoutes';
 
@@ -17,7 +22,7 @@ class App {
   }
 
   routes() {
-    // Definindo a rota da /
+    // Definindo as rotas
     this.app.use('/', homeRoutes);
   }
 }
