@@ -18,6 +18,8 @@ class UserController {
     try {
       // Procurando todos os usuários na base da dados
       const users = await User.findAll();
+      console.log('USER ID:', req.userId);
+      console.log('USER EMAIL:', req.userEmail);
       // Retornando todos os usuários em JSON
       return res.json(users);
     } catch (e) {
