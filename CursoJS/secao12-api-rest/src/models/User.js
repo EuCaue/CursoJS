@@ -56,4 +56,9 @@ export default class User extends Model {
     });
     return this;
   }
+
+  // Metódo para validar a senha do usuário
+  passwordIsValid(password) {
+    return bcryptjs.compare(password, this.password_hash);
+  }
 }
