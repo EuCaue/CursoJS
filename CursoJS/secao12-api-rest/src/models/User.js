@@ -49,8 +49,10 @@ export default class User extends Model {
     });
     // Hook para antes de salvar verificar a hash da senha do usuário
     this.addHook('beforeSave', async (user) => {
-      // eslint-disable-next-line no-param-reassign
-      user.password_hash = await bcryptjs.hash(user.password, 8);
+      if (user.password) {
+        // eslint-disable-next-line no-param-reassign
+        user.password_hash = await bcryptjs.hash(user.password, 8);
+      }
     });
     return this;
   }
