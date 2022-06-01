@@ -6,7 +6,8 @@ class UserController {
     try {
       // Esperando para criar um novo usuário
       const novoUser = await User.create(req.body);
-      return res.json(novoUser);
+      const { id, nome, email } = novoUser;
+      return res.json({ id, nome, email });
     } catch (e) {
       // Retornando os erros, se tiver, em um objeto
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
@@ -17,9 +18,7 @@ class UserController {
   async index(req, res) {
     try {
       // Procurando todos os usuários na base da dados
-      const users = await User.findAll();
-      console.log('USER ID:', req.userId);
-      console.log('USER EMAIL:', req.userEmail);
+      const users = await User.findAll({ attributes: ['id', 'nome', 'email'] });
       // Retornando todos os usuários em JSON
       return res.json(users);
     } catch (e) {
@@ -33,8 +32,10 @@ class UserController {
     try {
       // Procurando o usuário na base de dados por pk(id)
       const user = await User.findByPk(req.params.id);
+
+      const { id, nome, email } = user;
       // Retornando o usuários pedido
-      return res.json(user);
+      return res.json({ id, nome, email });
     } catch (e) {
       // Retornando o erro
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
@@ -44,14 +45,8 @@ class UserController {
   // Update
   async update(req, res) {
     try {
-      // Checando se foi passado o ID na URL
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['Missing ID'],
-        });
-      }
       // Procurando o usuário na base de dados por pk(id)
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
       // Checando se o usuário existe na base de dados
       if (!user) {
         return res.status(400).json({
@@ -59,8 +54,9 @@ class UserController {
         });
       }
       const novoDados = await user.update(req.body);
+      const { id, nome, email } = novoDados;
       // Retornando os novosDados editados do usuários selecionado
-      return res.json(novoDados);
+      return res.json({ id, nome, email });
     } catch (e) {
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
     }
@@ -69,14 +65,8 @@ class UserController {
   // Delete
   async delete(req, res) {
     try {
-      // Checando se foi passado o ID na URL
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['Missing ID'],
-        });
-      }
       // Procurando o usuário na base de dados por pk(id)
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ['User doesn\'t exist'],
@@ -85,7 +75,7 @@ class UserController {
       // Deletando o usuário selecionado da base da dos
       await user.destroy();
       // Retornando o user, para verificar os dados que foram deletados
-      return res.json(user);
+      return res.json(null);
     } catch (e) {
       return res.status(400).json({ errors: e.errors.map((err) => err.message) });
     }
