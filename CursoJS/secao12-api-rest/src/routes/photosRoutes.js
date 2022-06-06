@@ -1,10 +1,11 @@
 import { Router } from 'express';
+import loginRequired from '../middlewares/loginRequired';
 
 import photosController from '../controllers/PhotosController';
 
 const router = new Router();
 
 // Rotas das photos
-router.post('/', photosController.store);
+router.post('/', loginRequired, photosController.store);
 
 export default router;

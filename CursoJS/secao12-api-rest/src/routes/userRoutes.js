@@ -10,9 +10,9 @@ const router = new Router();
 // router.get('/:id', userController.show); // Lista usuaŕio
 
 // Rotas dos users
-router.post('/', userController.store);
+router.post('/', loginRequired, userController.store);
 router.put('/', loginRequired, userController.update);
-router.delete('/', userController.delete);
+router.delete('/', loginRequired, userController.delete);
 
 export default router;
 
