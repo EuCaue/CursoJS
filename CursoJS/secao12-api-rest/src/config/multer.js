@@ -17,7 +17,7 @@ export default {
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
       // Resolvendo o caminho para o diretorio de uploads
-      cb(null, resolve(__dirname, '..', '..', 'uploads'));
+      cb(null, resolve(__dirname, '..', '..', 'uploads', 'images'));
     },
     filename: (req, file, cb) => {
     // Salvando o arquivo com o nome da data que foi posto em MS + a função random + a extensão dele

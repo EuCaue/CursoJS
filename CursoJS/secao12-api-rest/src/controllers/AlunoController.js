@@ -11,7 +11,7 @@ class AlunoController {
       order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
       include: {
         model: Photo,
-        attributes: ['id', 'originalname', 'filename'],
+        attributes: ['url', 'id', 'originalname', 'filename'],
       },
     });
     res.json(alunos);
@@ -48,7 +48,7 @@ class AlunoController {
         include: {
           // Mostra a foto vinculada ao aluno
           model: Photo,
-          attributes: ['id', 'originalname', 'filename'],
+          attributes: ['url', 'id', 'originalname', 'filename'],
         },
       });
 
