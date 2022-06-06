@@ -4,15 +4,15 @@ import { resolve } from 'path';
 dotenv.config();
 
 // Imports
-import './src/database';
+import './database';
 import express from 'express';
 
 // Routes import's
-import homeRoutes from './src/routes/homeRoutes';
-import userRoutes from './src/routes/userRoutes';
-import tokenRoutes from './src/routes/tokenRoutes';
-import alunoRoutes from './src/routes/alunoRoutes';
-import photosRoutes from './src/routes/photosRoutes';
+import homeRoutes from './routes/homeRoutes';
+import userRoutes from './routes/userRoutes';
+import tokenRoutes from './routes/tokenRoutes';
+import alunoRoutes from './routes/alunoRoutes';
+import photosRoutes from './routes/photosRoutes';
 
 // Classe do app
 class App {
