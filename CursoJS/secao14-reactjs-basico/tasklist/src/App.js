@@ -7,5 +7,5 @@ import './App.css';
 // <> </> caso não queira usar nenhum elemento
 
 export default function App() {
-  return <Main />w;
+  return <Main />;
 }
