@@ -6,6 +6,8 @@ dotenv.config();
 // Imports
 import './database';
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 
 // Routes import's
 import homeRoutes from './routes/homeRoutes';
@@ -13,6 +15,21 @@ import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import photosRoutes from './routes/photosRoutes';
+
+const whitelist = [
+  'http://34.176.148.27',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 
 // Classe do app
 class App {
@@ -24,6 +41,8 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors(corsOptions));
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     // Definindo pasta de arquivos estáticos
