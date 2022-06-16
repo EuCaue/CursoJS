@@ -1,28 +1,40 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 
-// Form
-// eslint-disable-next-line import/no-duplicates
-import { FaPlus } from 'react-icons/fa';
-
-// Tasks
-// eslint-disable-next-line import/no-duplicates
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
-
+import Form from './Form';
 import './Main.css';
+import Tasks from './Tasks';
 
 export default class Main extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     newTask: ' ',
     tasks: [],
+    index: -1,
   };
+
+  componentDidMount() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    if (!tasks) return;
+
+    this.setState({
+      tasks,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { tasks } = this.state;
+    if (tasks === prevState.tasks) return;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
   // Função para cuidar do onSubmit no formulário
   handleSubmit = (e) => {
     e.preventDefault();
-    const { tasks } = this.state;
+    const { tasks, index } = this.state;
     let { newTask } = this.state;
     // Tirando os espaços em brancos que tiver no input
     newTask = newTask.trim();
@@ -32,9 +44,20 @@ export default class Main extends Component {
 
     // Setando o state da tarefa
     const newTasks = [...tasks];
-    this.setState({
-      tasks: [...newTasks, newTask],
-    });
+
+    if (index === -1) {
+      this.setState({
+        tasks: [...newTasks, newTask],
+        newTask: '',
+      });
+    } else {
+      newTasks[index] = newTask;
+
+      this.setState({
+        tasks: [...newTasks],
+        index: -1,
+      });
+    }
   };
 
   handleChange = (e) => {
@@ -44,10 +67,15 @@ export default class Main extends Component {
   };
 
   handleEdit = (e, index) => {
-    console.log('Edit', index);
+    const { tasks } = this.state;
+    this.setState({
+      // eslint-disable-next-line react/no-unused-state
+      index,
+      newTask: tasks[index],
+    });
   };
 
-  // 
+  //
   handleDelete = (e, index) => {
     const { tasks } = this.state;
     const newTasks = [...tasks];
@@ -66,33 +94,18 @@ export default class Main extends Component {
     return (
       <div className="main">
         <h1>Lista de tarefas</h1>
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input
-            onChange={this.handleChange}
-            type="text"
-            placeholder="Digite Aqui"
-            value={newTask}
-          />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
 
-        {/* Criando a ul e as li's, com as tasks dentro dela */}
-        <ul className="tasks">
-          {tasks.map((task, index) => (
-            <li key={task}>
-              {task}
-              <span>
-                {/* edit && delete icon */}
-                <FaEdit onClick={(e) => this.handleEdit(e, index)} className="edit" />
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          newTask={newTask}
+        />
 
-                <FaWindowClose onClick={(e) => this.handleDelete(e, index)} className="delete" />
-              </span>
-            </li>
-          ))}
-        </ul>
-
+        <Tasks
+          tasks={tasks}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
