@@ -7,7 +7,7 @@ const router = new (0, _express.Router)();
 
 // Não deveria existir...
 // router.get('/', loginRequired, userController.index); // Lista usuários
-// router.get('/:id', userController.show); // Lista usuaŕio
+// router.get('/:id', userController.show ); // Lista usuaŕio
 
 // Rotas dos users
 router.post('/', _loginRequired2.default, _UserController2.default.store);

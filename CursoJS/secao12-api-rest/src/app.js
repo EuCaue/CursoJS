@@ -22,7 +22,8 @@ const whitelist = [
 ];
 
 const corsOptions = {
-  origin(origin, callback) {
+  // eslint-disable-next-line object-shorthand, func-names
+  origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
