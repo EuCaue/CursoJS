@@ -16,6 +16,10 @@ import tokenRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import photosRoutes from './routes/photosRoutes';
 
+const {
+  expressCspHeader, INLINE, NONE, SELF,
+} = require('express-csp-header');
+
 const whitelist = [
   'http://34.176.148.27',
   'http://localhost:3000',
@@ -32,6 +36,8 @@ const corsOptions = {
   },
 };
 
+// express will send header "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' somehost.com; style-src 'self' mystyles.net; img-src data: images.com; workers-src 'none'; block-all-mixed-content; report-uri https://cspreport.com/send;'
+
 // Classe do app
 class App {
   constructor() {
@@ -42,6 +48,16 @@ class App {
   }
 
   middlewares() {
+    this.app.use(expressCspHeader({
+      directives: {
+        'default-src': [SELF],
+        'script-src': [SELF, INLINE, 'somehost.com'],
+        'style-src': [SELF, 'mystyles.net'],
+        'img-src': ['data:', 'images.com'],
+        'worker-src': [NONE],
+        'block-all-mixed-content': true,
+      },
+    }));
     this.app.use(cors(corsOptions));
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
