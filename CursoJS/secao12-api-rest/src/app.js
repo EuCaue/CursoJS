@@ -31,8 +31,6 @@ const corsOptions = {
   },
 };
 
-// express will send header "Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' somehost.com; style-src 'self' mystyles.net; img-src data: images.com; workers-src 'none'; block-all-mixed-content; report-uri https://cspreport.com/send;'
-
 // Classe do app
 class App {
   constructor() {
