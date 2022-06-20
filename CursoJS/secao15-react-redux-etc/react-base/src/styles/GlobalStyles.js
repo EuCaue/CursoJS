@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { primaryColor, primaryDarkColor } from '../config/colors';
 
 // Default styles for the application
 
@@ -11,8 +12,9 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: #eee;
     font-family: 'Inter', sans-serif;
+    background-color: ${primaryDarkColor};
+    color: ${primaryColor};
   }
 
   html, body, #root {
@@ -22,11 +24,18 @@ export default createGlobalStyle`
   /* Default style for buttons in the application */
   button {
     cursor: pointer;
+    background-color: ${primaryColor};
+    border: none;
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 700;
   }
 
   /* Default style for links in the application  */
   a {
     text-decoration: none;
+    color: ${primaryColor};
   }
   /* Default style for ul tag in the application */
   ul {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// File for style in the Login Page
+// styled-component for style in the Login Page
 
 // h1 style
 export const Title = styled.h1`
