@@ -1,6 +1,6 @@
 // Imports
 import React from 'react';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Header from './components/Header';
 import Router from './routes';
 import GlobalStyles from './styles/GlobalStyles';
