@@ -1,3 +1,5 @@
+// Style for the home page
+
 import styled from 'styled-components';
 import { primaryDarkColor } from '../../config/colors';
 

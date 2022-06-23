@@ -1,3 +1,6 @@
+// Home Page
+
+// Imports
 import React from 'react';
 import { FaSmile } from 'react-icons/fa';
 import { Container } from '../../styles/GlobalStyles';
