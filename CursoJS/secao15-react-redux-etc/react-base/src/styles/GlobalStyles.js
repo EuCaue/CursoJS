@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { primaryColor, primaryDarkColor } from '../config/colors';
+import * as colors from '../config/colors';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Default styles for the application
 
@@ -14,8 +15,8 @@ export default createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: ${primaryDarkColor};
-    color: ${primaryColor};
+    background-color: ${colors.primaryDarkColor};
+    color: ${colors.primaryColor};
   }
 
   html, body, #root {
@@ -25,7 +26,7 @@ export default createGlobalStyle`
   /* Default style for buttons in the application */
   button {
     cursor: pointer;
-    background-color: ${primaryColor};
+    background-color: ${colors.primaryColor};
     border: none;
     color: #ccc;
     padding: 10px 20px;
@@ -35,16 +36,24 @@ export default createGlobalStyle`
 
   /* Default style for links in the application  */
   a {
+    color: ${colors.primaryColor};
     text-decoration: none;
-    color: ${primaryColor};
   }
   /* Default style for ul tag in the application */
   ul {
     list-style: none;
   }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast--success {
+    background: ${colors.sucessColor};
+  }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast--error {
+    background: ${colors.errorColor};
+  }
 `;
 
-// Estilo da section clas="Container"
+// Style for section, class="Container"
 export const Container = styled.section`
   max-width: 360px;
   background: #2d3;

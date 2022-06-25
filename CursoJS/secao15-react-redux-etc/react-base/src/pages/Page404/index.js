@@ -1,8 +1,8 @@
 //* Page404 for all Not found pages
-
 // Imports
 import React from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
+
 import { Container } from '../../styles/GlobalStyles';
 import { StylePage404 } from './styled';
 

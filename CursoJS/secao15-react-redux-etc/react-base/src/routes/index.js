@@ -3,8 +3,8 @@
 // Import's
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
 
+import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 import MyRoute from './myRoute';

@@ -13,13 +13,15 @@ export default function Header() {
         <FaHome size={24} className="faHome" />
       </Link>
 
-      <Link to="/login">
-        <FaUserAlt size={24} className="faUser" />
+      <span>
+        <Link to="/login">
+          <FaUserAlt size={24} className="faUser" />
+        </Link>
 
         <Link to="logout">
           <FaSignInAlt size={24} className="faSignIn" />
         </Link>
-      </Link>
+      </span>
     </Nav>
   );
 }

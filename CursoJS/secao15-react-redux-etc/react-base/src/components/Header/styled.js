@@ -16,6 +16,11 @@ export const Nav = styled.nav`
     justify-content: right;
   }
 
+  span {
+    display: flex;
+    justify-content: right;
+
+    }
   .faUser {
     margin: 0 10px 0 0;
   }
