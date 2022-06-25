@@ -26,5 +26,9 @@ export const StylePage404 = styled.h1`
     font-size: 50px;
   }
 
+  ::selection {
+    background-color: #ff825c;
+    color: #fff;
+  }
 
     `;

@@ -12,13 +12,12 @@ export const Nav = styled.nav`
   a {
     display: flex;
     color: #FFF;
-    margin: 0 10px 0 0;
     font-weight: bold;
     justify-content: right;
   }
 
   .faUser {
-    margin: 0 10px;
+    margin: 0 10px 0 0;
   }
 
 
