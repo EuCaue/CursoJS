@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 // The Login Page
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragraph } from './styled';
@@ -16,6 +17,16 @@ export default function Login() {
   //   getDate();
   // }, []);
 
+  const dispatch = useDispatch();
+
+  function handleClick(e) {
+    e.preventDefault();
+
+    dispatch({
+      type: 'BUTTON_CLICKED',
+    });
+  }
+
   return (
     <Container>
       <Title>
@@ -23,7 +34,9 @@ export default function Login() {
         <small>Olá mundão</small>
       </Title>
       <Paragraph>Paragŕafo mesmo</Paragraph>
-      <button type="submit">Enviar</button>
+      <button type="submit" onClick={handleClick}>
+        Enviar
+      </button>
     </Container>
   );
 }
