@@ -46,11 +46,13 @@ export default createGlobalStyle`
 
   body .Toastify .Toastify__toast-container .Toastify__toast--success {
     background: ${colors.sucessColor};
+    font-family: 'Patua One', sans-serif;
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
-    background: ${colors.errorColor};
-  }
+    background: ${colors.primaryDarkColor};
+    font-family: 'Patua One', sans-serif;
+}
 `;
 
 // Style for section, class="Container"
