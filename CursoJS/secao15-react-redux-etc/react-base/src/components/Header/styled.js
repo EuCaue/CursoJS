@@ -4,6 +4,7 @@ import { primaryColor } from '../../config/colors';
 
 export const Nav = styled.nav`
   background-color: ${primaryColor};
+  color: white;
   padding: 20px;
   display: flex;
   justify-content: space-between;

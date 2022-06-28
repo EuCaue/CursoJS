@@ -5,26 +5,15 @@ import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragraph } from './styled';
-// import axios from '../../services/axios';
+import * as exampleAction from '../../store/modules/examples/actions';
 
 export default function Login() {
-  // React.useEffect(() => {
-  //   async function getDate() {
-  //     const response = await axios.get('/alunos');
-  //     const { data } = response;
-  //     console.log(data);
-  //   }
-  //   getDate();
-  // }, []);
-
   const dispatch = useDispatch();
 
   function handleClick(e) {
     e.preventDefault();
 
-    dispatch({
-      type: 'BUTTON_CLICKED',
-    });
+    dispatch(exampleAction.clickButton());
   }
 
   return (
