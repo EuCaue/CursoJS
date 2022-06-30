@@ -1,2 +1,4 @@
-// Files for the types for redux
-export const BUTTON_CLICKED = 'BUTTON_CLICKED';
+//  Files for the types for redux
+export const BUTTON_CLICKED_SUCCESS = 'BUTTON_CLICKED_SUCCESS';
+export const BUTTON_CLICKED_REQUEST = 'BUTTON_CLICKED_REQUEST';
+export const BUTTON_CLICKED_FAILURE = 'BUTTON_CLICKED_FAILURE';

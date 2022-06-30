@@ -1,8 +1,18 @@
 // Files for the actions for reducer
 import * as types from '../types';
 
-export function clickButton() {
+export function buttonClickedRequest() {
   return {
-    type: types.BUTTON_CLICKED,
+    type: types.BUTTON_CLICKED_REQUEST,
+  };
+}
+export function buttonClickedSucess() {
+  return {
+    type: types.BUTTON_CLICKED_SUCCESS,
+  };
+}
+export function buttonClickedFailure() {
+  return {
+    type: types.BUTTON_CLICKED_FAILURE,
   };
 }
