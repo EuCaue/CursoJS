@@ -2,12 +2,12 @@
 /* eslint-disable default-param-last */
 import * as types from '../types';
 
-// initialState
+// initialState 💬
 const initialState = {
   buttonClicked: false,
 };
 
-// Reducer
+// Reducer 💬
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.BUTTON_CLICKED_SUCCESS: {

@@ -1,4 +1,4 @@
-// Files for the actions for reducer
+// Files for the actions for reducers 💬
 import * as types from '../types';
 
 export function buttonClickedRequest() {
