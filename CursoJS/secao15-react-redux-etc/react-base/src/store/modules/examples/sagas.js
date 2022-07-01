@@ -7,18 +7,16 @@ const req = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
-    }, 2000);
+    }, 100);
   });
 
 function* exampleRequest() {
   try {
     yield call(req);
-    yield put(actions.buttonClickedSucess);
+    yield put(actions.buttonClickedSucess());
   } catch {
-    yield put(actions.buttonClickedFailure);
+    yield put(actions.buttonClickedFailure());
   }
 }
 
-export default all([
-  takeLatest(types.BUTTON_CLICKED_REQUEST, exampleRequest()),
-]);
+export default all([takeLatest(types.BUTTON_CLICKED_REQUEST, exampleRequest)]);

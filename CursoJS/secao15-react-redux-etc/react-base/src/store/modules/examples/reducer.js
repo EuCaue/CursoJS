@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable default-param-last */
 import * as types from '../types';
 
