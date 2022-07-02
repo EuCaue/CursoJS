@@ -58,7 +58,7 @@ export default createGlobalStyle`
 // Style for section, class="Container"
 export const Container = styled.section`
   max-width: 360px;
-  background: #2d3;
+  background: #ccc;
   margin: 30px auto;
   padding: 30px;
   border-radius: 5px;
