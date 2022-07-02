@@ -25,7 +25,7 @@ export default function Login() {
         onClick={handleClick}
         style={{ margin: '20px 0px 0px 105px' }}
       >
-        Enviar
+        Submit
       </button>
     </Container>
   );

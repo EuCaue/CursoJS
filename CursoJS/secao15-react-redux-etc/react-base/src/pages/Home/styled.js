@@ -10,7 +10,7 @@ export const Title = styled.h1`
   font-family: 'Fira Sans', sans-serif;
   font-weight: bold;
   :hover{
-    font-size: 100px;
+    font-size: 79px;
     font-weight: normal;
     transition: 850ms;
     color: ${primaryDarkColor};

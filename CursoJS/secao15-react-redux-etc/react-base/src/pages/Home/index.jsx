@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <Container>
       <Title>
-        Seja bem vindo <FaSmile />
+        Welcome <FaSmile />
       </Title>
     </Container>
   );
