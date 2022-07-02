@@ -18,12 +18,13 @@ export default function Login() {
 
   return (
     <Container>
-      <Title>
-        Login
-        <small>Olá mundão</small>
-      </Title>
-      <Paragraph>Paragŕafo mesmo</Paragraph>
-      <button type="submit" onClick={handleClick}>
+      <Title>Login</Title>
+      <Paragraph>Sample Text </Paragraph>
+      <button
+        type="submit"
+        onClick={handleClick}
+        style={{ margin: '20px 0px 0px 105px' }}
+      >
         Enviar
       </button>
     </Container>

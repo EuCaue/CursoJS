@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 // h1 style
 export const Title = styled.h1`
-/* Tudo que está "fora" de chaves é o styled.any e o que estiver dentro de chaves é filho do .any */
-  background: chocolate;
-
+  text-align: center;
+  margin-bottom: 10px;
   small {
     font-size: 12pt;
     margin-left: 15px;
@@ -20,9 +19,11 @@ export const Title = styled.h1`
 
 // Paragraph Style
 export const Paragraph = styled.p`
+
+text-align: center;
+
   :hover {
     cursor: pointer;
-    background-color: #d23;
   }
 
 `;
