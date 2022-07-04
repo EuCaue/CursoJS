@@ -42,7 +42,9 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors());
+    this.app.use(cors({
+      origin: '*',
+    }));
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
@@ -52,7 +54,6 @@ class App {
 
   routes() {
     // Definindo as rotas
-    this.app.use(cors());
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
