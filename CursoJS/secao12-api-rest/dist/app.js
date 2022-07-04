@@ -16,11 +16,11 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _photosRoutes = require('./routes/photosRoutes'); var _photosRoutes2 = _interopRequireDefault(_photosRoutes);
 
-const whitelist = [
-  'http://34.176.148.27',
-  'http://localhost:3000',
-  'http://localhost:3001',
-];
+//const whitelist = [
+  //'http://34.176.148.27',
+  //'http://localhost:3000',
+  //'http://localhost:3001',
+//];
 
 //const corsOptions = {
   //origin(origin, callback) {
@@ -42,7 +42,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, ));
+    //this.app.use(cors());
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
