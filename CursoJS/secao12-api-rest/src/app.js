@@ -16,11 +16,11 @@ import tokenRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoutes';
 import photosRoutes from './routes/photosRoutes';
 
-const whitelist = [
-  'http://34.176.148.27',
-  'http://localhost:3000',
-  'http://localhost:3001',
-];
+//const whitelist = [
+  //'http://34.176.148.27',
+  //'http://localhost:3000',
+  //'http://localhost:3001',
+//];
 
 //const corsOptions = {
   //origin(origin, callback) {
@@ -42,7 +42,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors());
+    //this.app.use(cors());
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
