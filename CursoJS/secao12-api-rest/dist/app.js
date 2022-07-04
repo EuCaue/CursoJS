@@ -19,18 +19,18 @@ var _photosRoutes = require('./routes/photosRoutes'); var _photosRoutes2 = _inte
 const whitelist = [
   'http://34.176.148.27',
   'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
-const corsOptions = {
-  // eslint-disable-next-line object-shorthand, func-names
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+//const corsOptions = {
+  //origin(origin, callback) {
+    //if (whitelist.indexOf(origin) !== -1 || !origin) {
+      //callback(null, true);
+    //} else {
+     // callback(new Error('Not allowed by CORS'));
+   // }
+ // },
+//};
 
 // Classe do app
 class App {
@@ -42,7 +42,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptions));
+    this.app.use(_cors2.default.call(void 0, ));
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
