@@ -16,7 +16,6 @@ export default createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     background-color: ${colors.primaryDarkColor};
-    color: ${colors.primaryColor};
   }
 
   html, body, #root {
@@ -57,10 +56,16 @@ export default createGlobalStyle`
 
 // Style for section, class="Container"
 export const Container = styled.section`
-  max-width: 360px;
-  background: #ccc;
+  max-width: 650px;
+  background: #fff;
   margin: 30px auto;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 `;

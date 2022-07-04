@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 // Routes File
-// Import's
+
+// Global Imports 💬
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Home from '../pages/Home';
+// Local Imports 💬
 import Page404 from '../pages/Page404';
 import PrivateRoute from './PrivateRoute';
 import Student from '../pages/Student';
@@ -16,10 +16,13 @@ import Login from '../pages/Login';
 export default function Router() {
   return (
     <Routes>
+      {/* All routes with <PrivateRoute /> needed Open, to be an open route 💬 */}
+      {/* If user is allowed, go to destination page, if not, back to home */}
+
       {/* Home Path */}
       <Route exact path="/" element={<Students />} />
 
-      {/* If user is allowed, go to login page, if not, go to home */}
+      {/* Student  */}
       <Route exact path="/aluno/:id/edit" element={<PrivateRoute />}>
         <Route exact path="/aluno/:id/edit" element={<Student />} />
       </Route>
@@ -28,10 +31,12 @@ export default function Router() {
         <Route exact path="/aluno/" element={<Student />} />
       </Route>
 
+      {/* Photos */}
       <Route exact path="/fotos/" element={<PrivateRoute />}>
         <Route exact path="/fotos/:id" element={<Photos />} />
       </Route>
 
+      {/* User */}
       <Route exact path="/register/" element={<PrivateRoute Open />}>
         <Route exact path="/register/" element={<Register />} />
       </Route>

@@ -7,7 +7,7 @@ _dotenv2.default.config();
 require('./database');
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+//import helmet from 'helmet';
 
 // Routes import's
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
@@ -16,21 +16,21 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interopRequireDefault(_alunoRoutes);
 var _photosRoutes = require('./routes/photosRoutes'); var _photosRoutes2 = _interopRequireDefault(_photosRoutes);
 
-//const whitelist = [
-  //'http://34.176.148.27',
-  //'http://localhost:3000',
-  //'http://localhost:3001',
-//];
+const whitelist = [
+  'http://34.176.148.27',
+  'http://localhost:3000',
+  'http://localhost:3001',
+];
 
-//const corsOptions = {
-  //origin(origin, callback) {
-    //if (whitelist.indexOf(origin) !== -1 || !origin) {
-      //callback(null, true);
-    //} else {
-     // callback(new Error('Not allowed by CORS'));
-   // }
- // },
-//};
+const corsOptions = {
+  origin(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 
 // Classe do app
 class App {
@@ -42,8 +42,8 @@ class App {
   }
 
   middlewares() {
-    //this.app.use(cors());
-    this.app.use(_helmet2.default.call(void 0, ));
+    this.app.use(_cors2.default.call(void 0, corsOptions));
+    //this.app.use(helmet());
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     // Definindo pasta de arquivos estáticos

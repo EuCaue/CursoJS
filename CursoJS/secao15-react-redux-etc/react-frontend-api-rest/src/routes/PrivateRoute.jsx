@@ -8,10 +8,6 @@ export default function PrivateRoute({ Open }) {
   return Open ? <Outlet /> : <Navigate to="/" />;
 }
 
-PrivateRoute.defaultProps = {
-  // isLoggedIn: false,
-};
-
 PrivateRoute.propTypes = {
   Open: PropTypes.bool.isRequired,
 };
