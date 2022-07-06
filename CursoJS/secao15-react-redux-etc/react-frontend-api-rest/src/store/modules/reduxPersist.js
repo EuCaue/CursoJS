@@ -6,13 +6,13 @@ export default (reducers) => {
   const persistedReducers = persistReducer(
     {
       // Application name 💬
-      key: 'REACT-BASE',
+      key: 'REACT-FRONTEND-API-REST',
 
       // Local to storage 💬
       storage,
 
       // Modules you want to save 💬
-      whitelist: ['exampleReducer'],
+      whitelist: ['auth'],
     },
 
     // Reducers 💬

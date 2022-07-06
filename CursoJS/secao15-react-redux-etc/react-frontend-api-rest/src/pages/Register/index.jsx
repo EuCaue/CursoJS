@@ -33,8 +33,8 @@ export default function Register() {
     }
     if (password.length < 6 || password.length > 50) {
       formErrors = true;
+      toast.error('Password must be 3 a 255 characters');
     }
-    toast.error('Password must be 3 a 255 characters');
 
     if (formErrors) return;
 

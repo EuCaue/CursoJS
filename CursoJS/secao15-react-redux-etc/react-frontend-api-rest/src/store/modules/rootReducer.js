@@ -1,7 +1,7 @@
 // Combine all reducers, and export everything
 import { combineReducers } from 'redux';
-import exampleReducer from './examples/reducer';
+import auth from './auth/reducer';
 
 export default combineReducers({
-  exampleReducer,
+  auth,
 });
