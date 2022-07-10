@@ -1,21 +1,23 @@
-// Global Import
+// Global Import 💬
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// Local Import
+// Local Import 💬
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Login() {
-  // use*
+  // hooks and variables 💬
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  // arrow function to handleSubmit
+  // function to handle the submit 💬
   const handleSubmit = (e) => {
     e.preventDefault();
     let formErrors = false;
@@ -33,14 +35,16 @@ export default function Login() {
 
     if (formErrors) return;
 
-    // dispatch a loginRequest, sendo email and password
-    dispatch(actions.loginRequest({ email, password }));
+    // dispatch a loginRequest, sending email and password, and the navigate hook as a payload for redux-saga 💬
+    dispatch(actions.loginRequest({ email, password, navigate: navigate(-1) }));
   };
 
   return (
+    // Form for the login page 💬
     <Container>
       <h1>Login Page</h1>
       <Form onSubmit={(e) => handleSubmit(e)}>
+        {/* Email Input 💬 */}
         <label htmlFor="email">
           Email:
           <input
@@ -50,6 +54,8 @@ export default function Login() {
             placeholder="Email"
           />
         </label>
+
+        {/* Password Input 💬 */}
         <label htmlFor="password">
           Password:
           <input

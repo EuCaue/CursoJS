@@ -1,4 +1,4 @@
-// Routes File
+// Routes File 💬
 
 // Global Imports 💬
 import React from 'react';
@@ -17,7 +17,7 @@ export default function Router() {
   return (
     <Routes>
       {/* All routes with <PrivateRoute /> needed Open, to be an open route 💬 */}
-      {/* If user is allowed, go to destination page, if not, back to home */}
+      {/* If user is allowed, go to children page, if not, is redirected to login page */}
 
       {/* Home Path */}
       <Route exact path="/" element={<Students />} />
@@ -26,21 +26,19 @@ export default function Router() {
       <Route exact path="/aluno/:id/edit" element={<PrivateRoute />}>
         <Route exact path="/aluno/:id/edit" element={<Student />} />
       </Route>
-
       <Route exact path="/aluno/" element={<PrivateRoute />}>
         <Route exact path="/aluno/" element={<Student />} />
       </Route>
 
       {/* Photos */}
       <Route exact path="/fotos/" element={<PrivateRoute />}>
-        <Route exact path="/fotos/:id" element={<Photos />} />
+        <Route exact path="/fotos/:id/" element={<Photos />} />
       </Route>
 
       {/* User */}
       <Route exact path="/register/" element={<PrivateRoute Open />}>
         <Route exact path="/register/" element={<Register />} />
       </Route>
-
       <Route exact path="/login/" element={<PrivateRoute Open />}>
         <Route exact path="/login/" element={<Login />} />
       </Route>
