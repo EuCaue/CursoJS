@@ -7,7 +7,8 @@ _dotenv2.default.config();
 require('./database');
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-//import helmet from 'helmet';
+var _expressdelay = require('express-delay'); var _expressdelay2 = _interopRequireDefault(_expressdelay);
+// import helmet from 'helmet';
 
 // Routes import's
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
@@ -43,7 +44,8 @@ class App {
 
   middlewares() {
     this.app.use(_cors2.default.call(void 0, corsOptions));
-    //this.app.use(helmet());
+    // this.app.use(helmet());
+    this.app.use(delay(2000));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     // Definindo pasta de arquivos estáticos
