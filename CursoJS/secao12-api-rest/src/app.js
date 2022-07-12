@@ -7,7 +7,7 @@ dotenv.config();
 import './database';
 import express from 'express';
 import cors from 'cors';
-import dealy from 'express-delay';
+import delay from 'express-delay';
 // import helmet from 'helmet';
 
 // Routes import's
