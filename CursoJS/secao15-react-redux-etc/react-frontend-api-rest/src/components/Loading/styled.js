@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// Styled file for the "loading" page 💬
 
 export const Container = styled.div`
   position: absolute;
@@ -23,5 +24,6 @@ export const Container = styled.div`
 
   span {
     z-index: 2;
-  }
+    font-family: 'Coda', cursive;
+    }
 `;

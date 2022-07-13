@@ -9,6 +9,7 @@ import { get } from 'lodash';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import axios from '../../services/axios';
+import Loading from '../../components/Loading';
 
 export default function Register() {
   // Vars || use*() 💬
@@ -16,6 +17,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Function to handle submit 💬
   async function handleSubmit(e) {
@@ -36,6 +38,8 @@ export default function Register() {
       toast.error('Password must be 3 a 255 characters');
     }
 
+    setIsLoading(true);
+
     if (formErrors) return;
 
     // try catch to for complete register 💬
@@ -53,13 +57,16 @@ export default function Register() {
       const errors = get(err, 'response.data.errors', []);
 
       errors.map((error) => toast.error(error));
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
     <Container>
+      {/* loading  status */}
+      <Loading isLoading={isLoading} />
       <h1>Create account</h1>
-
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* Labels for the inputs */}
         <label htmlFor="name">

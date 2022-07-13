@@ -2,17 +2,19 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Local Import 💬
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import * as actions from '../../store/modules/auth/actions';
+import Loading from '../../components/Loading';
 
 export default function Login() {
   // hooks and variables 💬
   const navigate = useNavigate();
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -42,6 +44,8 @@ export default function Login() {
   return (
     // Form for the login page 💬
     <Container>
+      {/* loading  status */}
+      <Loading isLoading={isLoading} />
       <h1>Login Page</h1>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* Email Input 💬 */}

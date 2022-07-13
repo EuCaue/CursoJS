@@ -9,20 +9,20 @@ import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
 import { StudentContainer, ProfilePicture } from './styled';
-// import Loading from '../../components/Loading';
+import Loading from '../../components/Loading';
 
 export default function Students() {
   // useState for students 💬
   const [students, setStudents] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Getting the students data from the API 💬
   useEffect(() => {
     async function getData() {
-      // setIsLoading(true);
+      setIsLoading(true);
       const response = await axios.get('/alunos');
       setStudents(response.data);
-      // setIsLoading(false);
+      setIsLoading(false);
     }
 
     getData();
@@ -30,7 +30,8 @@ export default function Students() {
 
   return (
     <Container>
-      {/* <Loading isLoading={isLoading} /> */}
+      {/* loading  status */}
+      <Loading isLoading={isLoading} />
       <h1>Students</h1>
       <StudentContainer>
         {/* Map for get the student, and display: Photo, Name, email, table like 💬 */}

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable default-param-last */
 import * as types from '../types';
 
@@ -20,13 +19,19 @@ export default (state = initialState, action) => {
       newState.isLoggedIn = true;
       newState.token = action.payload.token;
       newState.user = action.payload.user;
+      newState.isLoading = false;
       return newState;
     }
 
     // if login fails, restores all the initialState to newState, and return, ensuring the user does not log in 💬
     case types.LOGIN_FAILURE: {
-      console.log('reduceR', action.payload);
       const newState = { ...initialState };
+      return newState;
+    }
+
+    case types.LOGIN_REQUEST: {
+      const newState = { ...initialState };
+      newState.isLoading = true;
       return newState;
     }
 
