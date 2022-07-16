@@ -12,7 +12,7 @@ const initialState = {
 // Auth Reducer 💬
 export default (state = initialState, action) => {
   switch (action.type) {
-    // If the user log in with success, copies state to newState, and set the variables for confirming that is  logged 💬
+    // If the user log in with success, copies state to newState, and set the variables for confirming that is logged 💬
     // And return the newState
     case types.LOGIN_SUCCESS: {
       const newState = { ...state };
@@ -30,7 +30,34 @@ export default (state = initialState, action) => {
     }
 
     case types.LOGIN_REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+
+    // REGISTER*
+
+    // If updating data, set the state with new user name and email
+    case types.REGISTER_UPDATED_SUCCESS: {
+      const newState = { ...state };
+      newState.user.nome = action.payload.nome;
+      newState.user.email = action.payload.email;
+      newState.isLoading = false;
+      return newState;
+    }
+
+    case types.REGISTER_CREATED_SUCCESS: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_FAILURE: {
       const newState = { ...initialState };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_REQUEST: {
+      const newState = { ...state };
       newState.isLoading = true;
       return newState;
     }

@@ -35,8 +35,54 @@ function persistRehydrate({ payload }) {
   axios.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
+// Function to deal with the registerRequest and the change account data
+// eslint-disable-next-line consistent-return
+function* registerRequest({ payload }) {
+  // data of the payload
+  const { id, nome, email, password } = payload;
+
+  try {
+    // if user is loggedIn, changing account information
+    if (id) {
+      yield call(axios.put, '/users', {
+        email,
+        nome,
+        password: password || undefined,
+      });
+      toast.success('Account successfully changed!');
+      yield put(actions.registerUpdatedSuccess({ id, nome, email }));
+    } else {
+      // if the user is registering
+      yield call(axios.post, '/users', {
+        email,
+        nome,
+        password,
+      });
+      toast.success('Account created with success!');
+      yield put(actions.registerCreatedSuccess({ id, nome, email }));
+    }
+  } catch (e) {
+    const errors = get(e, 'response.data.errors', []);
+    const status = get(e, 'response.status', '');
+    // if 401 error
+    if (status === 401) {
+      toast.info('You need to login again!');
+      return yield put(actions.loginFailure());
+    }
+    // if has any errors from the api
+    if (errors.length > 0) {
+      errors.map((error) => toast.error(error));
+    } else {
+      toast.error('Unknown error');
+    }
+
+    yield put(actions.registerFailure());
+  }
+}
+
 // Exporting 'all'; 💬
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
   takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
+  takeLatest(types.REGISTER_REQUEST, registerRequest),
 ]);
