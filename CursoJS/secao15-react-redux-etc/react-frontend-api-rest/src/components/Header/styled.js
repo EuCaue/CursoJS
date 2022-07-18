@@ -20,7 +20,6 @@ export const Nav = styled.nav`
   span {
     display: flex;
     justify-content: right;
-
     }
   .faUser {
     margin: 0 10px 0 0;
