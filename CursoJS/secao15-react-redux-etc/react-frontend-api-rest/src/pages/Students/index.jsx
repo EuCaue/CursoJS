@@ -3,7 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
+import {
+  FaUserCircle,
+  FaEdit,
+  FaWindowClose,
+  FaExclamation,
+} from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 // Local Imports 💬
 import { Container } from '../../styles/GlobalStyles';
@@ -28,6 +34,38 @@ export default function Students() {
     getData();
   }, []);
 
+  const handleDeleteAsk = (e) => {
+    e.preventDefault();
+    const exclamation = e.currentTarget.nextSibling;
+    exclamation.setAttribute('display', 'block');
+    e.currentTarget.remove();
+    toast.info('Click again, to confirm');
+  };
+
+  const handleDelete = async (e, id, index) => {
+    e.persist();
+    try {
+      setIsLoading(true);
+      await axios.delete(`/alunos/${id}`);
+      const newStudents = [...students];
+      newStudents.splice(index, 1);
+      setStudents(newStudents);
+      setIsLoading(false);
+    } catch (err) {
+      // const errors = get('err', 'response.data.errors', []);
+      // errors.map((error) => toast.error(error));
+
+      const status = get(err, 'response.status', 0);
+      if (status === 401) {
+        toast.error('You need to login');
+      } else {
+        toast.error('Error an ocurred a delete student');
+      }
+
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Container>
       {/* loading  status */}
@@ -35,7 +73,7 @@ export default function Students() {
       <h1>Students</h1>
       <StudentContainer>
         {/* Map for get the student, and display: Photo, Name, email, table like 💬 */}
-        {students.map((student) => (
+        {students.map((student, index) => (
           <div key={String(student.id)}>
             {/* Picture  */}
             <ProfilePicture>
@@ -51,8 +89,7 @@ export default function Students() {
 
             {/* Edit icon 💬 */}
             <Link
-              to={`
-              /aluno/${student.id}/edit
+              to={`aluno/${student.id}/edit
             `}
             >
               <FaEdit size={16} />
@@ -60,12 +97,17 @@ export default function Students() {
 
             {/* Delete Icon 💬 */}
             <Link
-              to={`
-              /aluno/${student.id}/delete
-            `}
+              onClick={(e) => handleDeleteAsk(e)}
+              to={`/aluno/${student.id}/delete`}
             >
               <FaWindowClose size={16} />
             </Link>
+            <FaExclamation
+              size={16}
+              display="none"
+              cursor="pointer"
+              onClick={(e) => handleDelete(e, student.id, index)}
+            />
           </div>
         ))}
       </StudentContainer>

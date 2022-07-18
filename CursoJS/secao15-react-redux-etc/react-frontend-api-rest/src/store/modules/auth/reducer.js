@@ -1,5 +1,6 @@
 /* eslint-disable default-param-last */
 import * as types from '../types';
+import axios from '../../../services/axios';
 
 // initialState 💬
 const initialState = {
@@ -25,6 +26,7 @@ export default (state = initialState, action) => {
 
     // if login fails, restores all the initialState to newState, and return, ensuring the user does not log in 💬
     case types.LOGIN_FAILURE: {
+      delete axios.defaults.headers.Authorization;
       const newState = { ...initialState };
       return newState;
     }
