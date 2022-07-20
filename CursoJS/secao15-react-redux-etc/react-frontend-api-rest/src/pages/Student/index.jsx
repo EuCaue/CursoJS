@@ -1,3 +1,4 @@
+// The page for the create and edit students 💬
 // Global Imports
 import React, { useState, useEffect } from 'react';
 import { get } from 'lodash';
@@ -153,9 +154,11 @@ export default function Student() {
 
   return (
     <Container>
+      {/* isLoading(?) */}
       <Loading isLoading={isLoading} />
       <h1>{id ? 'Edit Student' : 'New Student'}</h1>
       <Form onSubmit={(e) => handleSubmit(e)}>
+        {/* Labels && inputs 💬 */}
         <label htmlFor="name">
           Name:
           <input
