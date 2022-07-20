@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 // Routes File 💬
 
 // Global Imports 💬
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 // Local Imports 💬
 import Page404 from '../pages/Page404';

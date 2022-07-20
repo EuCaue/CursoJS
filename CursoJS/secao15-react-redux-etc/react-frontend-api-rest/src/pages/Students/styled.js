@@ -1,5 +1,12 @@
 // Style file for Students Page 💬
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const NewStudent = styled(Link)`
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+`;
 
 export const StudentContainer = styled.div`
   margin-top: 15px;

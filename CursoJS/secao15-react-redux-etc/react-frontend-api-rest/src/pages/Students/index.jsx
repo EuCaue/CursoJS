@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 // Global Import 💬
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { get } from 'lodash';
 import {
   FaUserCircle,
@@ -14,13 +14,15 @@ import { toast } from 'react-toastify';
 // Local Imports 💬
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
-import { StudentContainer, ProfilePicture } from './styled';
+import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import Loading from '../../components/Loading';
 
 export default function Students() {
   // useState for students 💬
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   // Getting the students data from the API 💬
   useEffect(() => {
@@ -58,6 +60,7 @@ export default function Students() {
       const status = get(err, 'response.status', 0);
       if (status === 401) {
         toast.error('You need to login');
+        navigate('/login');
       } else {
         toast.error('Error an ocurred a delete student');
       }
@@ -71,6 +74,8 @@ export default function Students() {
       {/* loading  status */}
       <Loading isLoading={isLoading} />
       <h1>Students</h1>
+      <NewStudent to="/aluno/">New Student</NewStudent>
+
       <StudentContainer>
         {/* Map for get the student, and display: Photo, Name, email, table like 💬 */}
         {students.map((student, index) => (
