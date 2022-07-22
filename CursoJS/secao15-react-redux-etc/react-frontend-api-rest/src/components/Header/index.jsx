@@ -1,7 +1,7 @@
-// Header File
-// Global imports
+// Header File 💬
+
+// Global imports 💬
 import React from 'react';
-// Icons from the Font-awesome
 import {
   FaHome,
   FaSignInAlt,
@@ -18,7 +18,7 @@ import { Nav } from './styled';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Header() {
-  // hooks*
+  // Hooks 💬
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export default function Header() {
   };
 
   return (
-    // NavBar
+    // NavBar 💬
     <Nav isLoggedIn={isLoggedIn}>
       <Link to="/">
         <FaHome size={24} className="faHome" />
@@ -51,10 +51,6 @@ export default function Header() {
             <FaSignInAlt size={24} className="faSignIn" />
           </Link>
         )}
-
-        {/* {isLoggedIn && (
-          <FaCircle size={24} color="#66ff33" className="faCircle" />
-        )} */}
       </span>
     </Nav>
   );

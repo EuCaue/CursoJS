@@ -12,7 +12,7 @@ import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
 
 export default function Login() {
-  // hooks and variables 💬
+  // Hooks  💬
   const navigate = useNavigate();
   const isLoading = useSelector((state) => state.auth.isLoading);
   const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ export default function Login() {
 
     if (formErrors) return;
 
-    // dispatch a loginRequest, sending email and password, and the navigate hook as a payload for redux-saga 💬
+    // dispatch a loginRequest, sending email, password and the navigate hook as a payload for redux-saga 💬
     dispatch(actions.loginRequest({ email, password, navigate: navigate(-1) }));
   };
 

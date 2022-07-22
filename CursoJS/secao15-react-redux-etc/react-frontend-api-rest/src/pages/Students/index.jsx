@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // Global Import 💬
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -18,7 +17,7 @@ import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import Loading from '../../components/Loading';
 
 export default function Students() {
-  // useState for students 💬
+  // Hooks 💬
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,9 +53,6 @@ export default function Students() {
       setStudents(newStudents);
       setIsLoading(false);
     } catch (err) {
-      // const errors = get('err', 'response.data.errors', []);
-      // errors.map((error) => toast.error(error));
-
       const status = get(err, 'response.status', 0);
       if (status === 401) {
         toast.error('You need to login');

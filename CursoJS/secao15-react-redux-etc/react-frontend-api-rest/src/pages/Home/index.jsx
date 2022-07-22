@@ -1,4 +1,5 @@
-// Home Page
+// Home Page Testing page, not used 💬
+// Use for test or something like that 💬
 
 // Imports
 import React from 'react';

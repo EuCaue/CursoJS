@@ -1,18 +1,20 @@
-/* eslint-disable consistent-return */
+// Global Imports 💬
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Local Imports 💬
 import { Container } from './styled';
 
 // Loading component for checking is the current page is loading, if its true, put a component in the ahead 💬
-// Of the actual component, in 2000ms, the loading finishes, and show the "real" component 💬
-// If its false, just return, and not show anything 💬
+// If its false, not show anything 💬
+// All magic in css 💬
 export default function Loading({ isLoading }) {
   if (!isLoading) return;
 
   return (
     <Container>
       <div />
-      <span>Carregando</span>
+      <span>Loading</span>
     </Container>
   );
 }

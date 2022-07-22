@@ -1,8 +1,10 @@
-//* Page404 for all Not found pages
-// Imports
+// Page404 for all Not found pages 💬
+
+// Global Imports💬
 import React from 'react';
 import { FaTimesCircle } from 'react-icons/fa';
 
+// Local Imports 💬
 import { Container } from '../../styles/GlobalStyles';
 import { StylePage404 } from './styled';
 

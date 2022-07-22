@@ -2,28 +2,31 @@
 // Global Imports
 import React, { useState, useEffect } from 'react';
 import { get } from 'lodash';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { isEmail, isInt, isFloat } from 'validator';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+import { FaEdit, FaUserCircle } from 'react-icons/fa';
 
 // Local imports
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, ProfilePicture } from './styled';
 import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Student() {
-  // hooks and vars *
+  // Hooks *
   const [name, setName] = useState('');
   const [middleName, setMiddlename] = useState('');
   const [email, setEmail] = useState('');
+  const [photo, setPhoto] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const id = get(useParams(), 'id', 0);
+
+  const id = get(useParams(), 'id', '');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,12 +39,13 @@ export default function Student() {
         setIsLoading(true);
         // fetching the data, from the DB 💬
         const { data } = await axios.get(`/alunos/${id}`);
-        const photo = get(data, 'Photos[0].url', '');
+        const photos = get(data, 'Photos[0].url', '');
 
         // Setting the states 💬
         setName(data.nome);
         setMiddlename(data.sobrenome);
         setEmail(data.email);
+        setPhoto(photos);
         setAge(data.idade);
         setWeight(data.peso);
         setHeight(data.altura);
@@ -157,6 +161,16 @@ export default function Student() {
       {/* isLoading(?) */}
       <Loading isLoading={isLoading} />
       <h1>{id ? 'Edit Student' : 'New Student'}</h1>
+      {/* Conditional for the Student's photo */}
+      {id && (
+        <ProfilePicture>
+          {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={180} />}
+          <Link to={`/photos/${id}`}>
+            <FaEdit size={24} />
+          </Link>
+        </ProfilePicture>
+      )}
+
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* Labels && inputs 💬 */}
         <label htmlFor="name">

@@ -1,3 +1,4 @@
+// Style file for the Login Page 💬
 import styled from 'styled-components';
 import * as colors from '../../config/colors';
 

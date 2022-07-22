@@ -32,8 +32,8 @@ export default function Router() {
       </Route>
 
       {/* Photos */}
-      <Route exact path="/fotos/" element={<PrivateRoute />}>
-        <Route exact path="/fotos/:id/" element={<Photos />} />
+      <Route exact path="/photos/:id/" element={<PrivateRoute />}>
+        <Route exact path="/photos/:id/" element={<Photos />} />
       </Route>
 
       {/* User */}

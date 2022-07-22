@@ -1,18 +1,18 @@
-// Global imports
+// Global Imports 💬
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useSelector, useDispatch } from 'react-redux';
 
-// Local Imports
+// Local Imports 💬
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
-  // Vars || use*() 💬
+  // Hooks 💬
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -52,6 +52,7 @@ export default function Register() {
 
     if (formErrors) return;
 
+    // dispatch a registerRequest, with name,email, password, id, and the navigate hooks as a payload for the redux saga 💬
     dispatch(
       actions.registerRequest({
         nome: name,
